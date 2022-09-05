@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Die : MonoBehaviour
 {
     public int value;
-    Vector3 startPos, offset;
+    Vector3 offset;
     public bool beingDragged;
-
+    public DieSlot slot;
     Image image;
 
     // Start is called before the first frame update
     void Start()
     {
-        // I want to rollll the dieee
+        // I want to rollll the dice
         image = GetComponent<Image>();
         value = Random.Range(1, 7);
         image.sprite = GameManager.instance.diceSprites[value - 1];
@@ -40,28 +41,52 @@ public class Die : MonoBehaviour
     public void StartDrag()
     {
         offset = transform.position - Input.mousePosition;
-        startPos = transform.position;
         beingDragged = true;
     }
 
     public void EndDrag()
     {
-        // Check if over a DieSpot
-        if (false)
-        {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
 
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, results);
+
+        DieSlot newSlot = null;
+        foreach(RaycastResult result in results)
+        {
+            newSlot = result.gameObject.GetComponent<DieSlot>();
+            if (newSlot)
+                break;
         }
-        // Check if being placed back in "hand"
-        else if (false)
-        {
 
+        // Check if over a DieSpot
+        if (newSlot)
+        {
+            MoveToSlot(newSlot);
         }
         // Otherwise, snap back to before drag position
         else
         {
-            transform.position = startPos;
+            transform.position = slot.transform.position;
         }
 
         beingDragged = false;
+    }
+
+    public void MoveToSlot(DieSlot newSlot)
+    {
+        slot.die = newSlot.die;
+        if(slot.die != null)
+        {
+            slot.die.slot = slot;
+            slot.die.transform.position = slot.transform.position;
+            slot.die.transform.parent = slot.transform;
+        }
+
+        newSlot.die = this;
+        transform.position = newSlot.transform.position;
+        transform.parent = newSlot.transform;
+        slot = newSlot;
     }
 }
