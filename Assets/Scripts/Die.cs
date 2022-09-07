@@ -9,7 +9,7 @@ public class Die : MonoBehaviour
     public int value;
     Vector3 offset;
     public bool beingDragged;
-    public DieSlot slot;
+    public DieSlot slot, ogSlot;
     Image image;
 
     // Start is called before the first frame update
@@ -63,7 +63,8 @@ public class Die : MonoBehaviour
         // Check if over a DieSpot
         if (newSlot)
         {
-            MoveToSlot(newSlot);
+            if(value >= newSlot.data.min && value <= newSlot.data.max)
+                MoveToSlot(newSlot);
         }
         // Otherwise, snap back to before drag position
         else
@@ -82,11 +83,46 @@ public class Die : MonoBehaviour
             slot.die.slot = slot;
             slot.die.transform.position = slot.transform.position;
             slot.die.transform.parent = slot.transform;
+            slot.die.ogSlot = slot;
         }
 
         newSlot.die = this;
         transform.position = newSlot.transform.position;
         transform.parent = newSlot.transform;
         slot = newSlot;
+
+        if (slot.ability)
+            SlotAction();
+        else
+            ogSlot = slot;
+    }
+
+    public void SlotAction()
+    {
+        if (slot.ability)
+        {
+            if (slot.data.fillAmount > 0)
+            {
+                slot.data.fillAmount = Mathf.Clamp(slot.data.fillAmount - value, 0, slot.data.fillAmount);
+                slot.UpdateUI();
+
+                if(slot.data.fillAmount == 0)
+                {
+                    slot.ability.DoAbility(-1);
+                }
+
+                Destroy(gameObject);
+            }
+            else if(slot.data.fillAmount == -1)
+            {
+                slot.ability.DoAbility(value);
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(ogSlot.gameObject);
     }
 }
