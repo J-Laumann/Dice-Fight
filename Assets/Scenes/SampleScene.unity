@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655a8d70b12445a8bbbf072253e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountOfDice: 0
+  amountOfDice: 3
   playerAbilities:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 3c6725e620c71a8438ab827c46e66bc2, type: 2}
   diceSprites:
   - {fileID: 21300000, guid: 93dc6c02af300d641ba88d96e41ad7d0, type: 3}
   - {fileID: 21300000, guid: 11b9d7e9a0eb5c9448b85f380b3c65a3, type: 3}
@@ -271,7 +271,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1545560831}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -427,7 +427,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1545560831}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -671,8 +671,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 940482335}
   - {fileID: 606297926}
+  - {fileID: 940482335}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
