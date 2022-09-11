@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab;
     public Transform diceParent, abilitiesParent;
+    public EnemyData enemy;
 
     public static GameManager instance;
 
@@ -46,6 +47,17 @@ public class GameManager : MonoBehaviour
     public void GiveNewDie()
     {
         Instantiate(newDiePrefab, diceParent);
+    }
+
+    public void AttackEnemyTest(int damage)
+    {
+        enemy.health -= damage;
+        print("Damage: " + damage + "; Enemy health remaining: " + enemy.health);
+
+        if(enemy.health <= 0)
+        {
+            print("Enemy Defeated!");
+        }
     }
 
     public void SetupAbilities()

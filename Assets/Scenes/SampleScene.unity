@@ -216,6 +216,7 @@ MonoBehaviour:
   amountOfDice: 3
   playerAbilities:
   - {fileID: 11400000, guid: 3c6725e620c71a8438ab827c46e66bc2, type: 2}
+  - {fileID: 11400000, guid: bf17fdb6f18f7cc44a922f4a8c298f04, type: 2}
   diceSprites:
   - {fileID: 21300000, guid: 93dc6c02af300d641ba88d96e41ad7d0, type: 3}
   - {fileID: 21300000, guid: 11b9d7e9a0eb5c9448b85f380b3c65a3, type: 3}
@@ -228,6 +229,7 @@ MonoBehaviour:
   abilityPrefab: {fileID: 2296040977897703201, guid: 4bdf6aafb177d8c40b4f24bff0d459c3, type: 3}
   diceParent: {fileID: 940482335}
   abilitiesParent: {fileID: 606297926}
+  enemy: {fileID: 11400000, guid: ba333dbdf8b7964449a09361e4ed15ab, type: 2}
 --- !u!4 &516214900
 Transform:
   m_ObjectHideFlags: 0

@@ -57,6 +57,11 @@ public class PlayerAbility : MonoBehaviour
             GameManager.instance.GiveNewDie();
         }
 
+        if(ability.abilityID == "ATTACK")
+        {
+            GameManager.instance.AttackEnemyTest(dieSlot.die.value);
+        }
+
         dieSlot.UpdateUI();
     }
 }
