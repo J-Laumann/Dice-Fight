@@ -5,18 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Enemy Data", order = 1)]
 public class EnemyData : ScriptableObject
 {
+    [SerializeField] private int baseHealth = 7;
     public int health;
     public int attack;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        health = baseHealth;
     }
 }
