@@ -6,8 +6,15 @@ using TMPro;
 [System.Serializable]
 public class DieSlotData
 {
-    public int min = 1, max = 6;
+    public int min = 1, max = 20;
     public int fillAmount = -1;
+
+    public DieSlotData(DieSlotData slot)
+    {
+        min = slot.min;
+        max = slot.max;
+        fillAmount = slot.fillAmount;
+    }
 }
 
 public class DieSlot : MonoBehaviour
@@ -19,10 +26,8 @@ public class DieSlot : MonoBehaviour
     public PlayerAbility ability;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        data = new DieSlotData();
-
         die = transform.GetComponentInChildren<Die>();
         if (die)
         {
@@ -41,21 +46,26 @@ public class DieSlot : MonoBehaviour
 
     public void UpdateUI()
     {
-        if(ability != null && ability.ability.uses == 0)
+        if(ability != null && ability.uses == 0)
         {
             Destroy(gameObject);
         }
         else
         {
-            if (data.fillAmount > -1)
+            if(data.fillAmount == 0)
+            {
+                fillText.text = "X";
+            }
+            else if (data.fillAmount > 0)
             {
                 fillText.text = data.fillAmount + "";
             }
+
             if(data.min != 1)
             {
                 minText.text = "Min: " + data.min;
             }
-            if(data.max != 6)
+            if(data.max != 20)
             {
                 maxText.text = "Max: " + data.max;
             }

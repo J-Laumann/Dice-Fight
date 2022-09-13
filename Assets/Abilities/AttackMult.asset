@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b26370831c5142442a9ca4ad50d6a9e6, type: 3}
-  m_Name: Reroll
-  m_EditorClassIdentifier: Assembly-CSharp::AbilityData
-  abilityID: REROLL
-  abilityName: Reroll
-  abilityDesc: Rerolls the dice
+  m_Name: AttackMult
+  m_EditorClassIdentifier: 
+  abilityID: ATTACK_MULT
+  abilityName: Multiplying Attack
+  abilityDesc: attacks with damage equal to the dice multiplied
   uses: 1
   dieSlots:
+  - min: 1
+    max: 20
+    fillAmount: -1
   - min: 1
     max: 20
     fillAmount: -1

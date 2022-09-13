@@ -9,7 +9,7 @@ public class AbilityData : ScriptableObject
     public string abilityName, abilityDesc;
     public int uses = -1;
 
-    public DieSlotData dieSlot;
+    public DieSlotData[] dieSlots;
 
     public AbilityData(AbilityData og)
     {
@@ -17,7 +17,7 @@ public class AbilityData : ScriptableObject
         abilityName = og.abilityName;
         abilityDesc = og.abilityDesc;
         uses = og.uses;
-        dieSlot = og.dieSlot;
+        dieSlots = og.dieSlots;
     }
 
 }

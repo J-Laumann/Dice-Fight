@@ -5,14 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public int amountOfDice;
+    public DieType[] myDice;
     public AbilityData[] playerAbilities;
 
     public Sprite[] diceSprites;
 
     public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab;
     public Transform diceParent, abilitiesParent;
-    public EnemyData enemy;
+
+    public EnemyData testEnemy;
+    public static EnemyData enemy;
 
     public static GameManager instance;
 
@@ -20,6 +22,9 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+
+        if (enemy == null)
+            enemy = testEnemy;
 
         SetupUI();
     }
@@ -38,15 +43,16 @@ public class GameManager : MonoBehaviour
 
     public void SetupDice()
     {
-        for(int i = 0; i < amountOfDice; i++)
+        foreach(DieType die in myDice)
         {
-            GiveNewDie();
+            GiveNewDie(die);
         }
     }
 
-    public void GiveNewDie()
+    public void GiveNewDie(DieType type)
     {
-        Instantiate(newDiePrefab, diceParent);
+        GameObject newDie = Instantiate(newDiePrefab, diceParent);
+        newDie.GetComponentInChildren<Die>().type = type;
     }
 
     public void AttackEnemyTest(int damage)

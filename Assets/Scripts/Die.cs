@@ -3,22 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using System;
+
+public enum DieType
+{
+    D4 = 4,
+    D6 = 6,
+    D8 = 8,
+    D10 = 10,
+    D12 = 12,
+    D20 = 20
+}
 
 public class Die : MonoBehaviour
 {
+    public DieType type;
     public int value;
     Vector3 offset;
     public bool beingDragged;
     public DieSlot slot, ogSlot;
+
     Image image;
+    TMP_Text valueText;
 
     // Start is called before the first frame update
     void Start()
     {
         // I want to rollll the dice
         image = GetComponent<Image>();
-        value = Random.Range(1, 7);
-        image.sprite = GameManager.instance.diceSprites[value - 1];
+        valueText = GetComponentInChildren<TMP_Text>();
+        value = UnityEngine.Random.Range(1, (int)type + 1);
+        valueText.text = "" + value;
+
+        image.sprite = GameManager.instance.diceSprites[Array.IndexOf(Enum.GetValues(type.GetType()), type)];
     }
 
     // Update is called once per frame
@@ -63,8 +81,10 @@ public class Die : MonoBehaviour
         // Check if over a DieSpot
         if (newSlot)
         {
-            if(value >= newSlot.data.min && value <= newSlot.data.max)
+            if(value >= newSlot.data.min && value <= newSlot.data.max && newSlot.data.fillAmount != 0)
                 MoveToSlot(newSlot);
+            else
+                transform.position = slot.transform.position;
         }
         // Otherwise, snap back to before drag position
         else
@@ -99,25 +119,29 @@ public class Die : MonoBehaviour
 
     public void SlotAction()
     {
-        if (slot.ability)
+        if (slot.data.fillAmount > 0)
         {
-            if (slot.data.fillAmount > 0)
-            {
-                slot.data.fillAmount = Mathf.Clamp(slot.data.fillAmount - value, 0, slot.data.fillAmount);
-                slot.UpdateUI();
+            slot.data.fillAmount = Mathf.Clamp(slot.data.fillAmount - value, 0, slot.data.fillAmount);
+            slot.UpdateUI();
 
-                if(slot.data.fillAmount == 0)
-                {
-                    slot.ability.DoAbility(-1);
-                }
+            Destroy(gameObject);
+        }
 
-                Destroy(gameObject);
-            }
-            else if(slot.data.fillAmount == -1)
+        bool filled = true;
+        foreach (DieSlot slot in slot.ability.dieSlots)
+        {
+            if (slot.data.fillAmount > 0 || (slot.data.fillAmount == -1 && slot.die == null))
             {
-                slot.ability.DoAbility(value);
-                Destroy(gameObject);
+                filled = false;
+                break;
             }
+        }
+
+        if (filled)
+        {
+            slot.ability.DoAbility();
+
+            transform.position = slot.transform.position;
         }
     }
 

@@ -7,13 +7,19 @@ public class PlayerAbility : MonoBehaviour
 {
 
     public AbilityData ability;
+    public int uses;
 
     public TMP_Text nameText, descText, usesText;
-    public DieSlot dieSlot;
+
+    public Transform dieSlotParent;
+    public GameObject dieSlotPrefab;
+    public List<DieSlot> dieSlots;
 
     public void Setup(AbilityData _ability)
     {
-        ability = new AbilityData(_ability);
+        dieSlots = new List<DieSlot>();
+        ability = _ability;
+        uses = _ability.uses;
         GenerateUI();
     }
 
@@ -25,8 +31,14 @@ public class PlayerAbility : MonoBehaviour
 
     public void GenerateUI()
     {
-        dieSlot.ability = this;
-        dieSlot.data = ability.dieSlot;
+        for(int i = 0; i < ability.dieSlots.Length; i++)
+        {
+            GameObject newSlot = Instantiate(dieSlotPrefab, dieSlotParent);
+            DieSlot slot = newSlot.GetComponent<DieSlot>();
+            dieSlots.Add(slot);
+            slot.ability = this;
+            slot.data = new DieSlotData(ability.dieSlots[i]);
+        }
 
         nameText.text = ability.abilityName;
         descText.text = ability.abilityDesc;
@@ -36,32 +48,69 @@ public class PlayerAbility : MonoBehaviour
 
     public void UpdateUses()
     {
-        if (ability.uses == 1)
+        if(uses == -1)
         {
-            usesText.text = ability.uses + " Use";
+            usesText.text = "Infinite Uses";
+        }
+        else if (uses == 1)
+        {
+            usesText.text = uses + " Use";
         }
         else
         {
-            usesText.text = ability.uses + " Uses";
+            usesText.text = uses + " Uses";
         }
     }
 
-    public void DoAbility(int value)
+    public void DoAbility()
     {
-        ability.uses--;
+        if(uses > 0)
+            uses--;
         UpdateUses();
 
-        // Do the ability! All hardcoded!
+
+        // HERE HERE HERE HERE HERE 
+        // MAKE ALL YOUR ABILITIES IN HERE!!!
+        // Simply create a new else if statement to check your abilityID and then make it do stuff
+        // feel free to copy paste
+
+        // Simply rerolls the type of dice put into it
         if(ability.abilityID == "REROLL")
         {
-            GameManager.instance.GiveNewDie();
+            GameManager.instance.GiveNewDie(dieSlots[0].die.type);
         }
 
-        if(ability.abilityID == "ATTACK")
+        // Deals damage equal to the dice
+        else if(ability.abilityID == "ATTACK")
         {
-            GameManager.instance.AttackEnemyTest(dieSlot.die.value);
+            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value);
         }
 
-        dieSlot.UpdateUI();
+        // Deals damage equal to the dice in the two slots multiplied
+        else if(ability.abilityID == "ATTACK_MULT")
+        {
+            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value * dieSlots[1].die.value);
+        }
+
+        // If you fill the slot with a total of ten, it deals 6 damage
+        else if(ability.abilityID == "ATTACK_FILL10")
+        {
+            GameManager.instance.AttackEnemyTest(6);
+        }
+
+
+
+        // This happens after, just resets all of the slots
+        for(int i = 0; i < dieSlots.Count; i++)
+        {
+            DieSlot slot = dieSlots[i];
+
+            if (slot.die)
+                Destroy(slot.die.gameObject);
+
+            slot.data.fillAmount = ability.dieSlots[i].fillAmount;
+
+            slot.UpdateUI();
+        }
     }
 }
