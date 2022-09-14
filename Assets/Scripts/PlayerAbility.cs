@@ -98,6 +98,13 @@ public class PlayerAbility : MonoBehaviour
             GameManager.instance.AttackEnemyTest(6);
         }
 
+        //Deals damage equal to dice 1 divided by dice 2. then reroles whatever dice was in the first slot
+        else if(ability.abilityID == "ATTACK_DIVIDE")
+        {
+            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value / dieSlots[1].die.value);
+            GameManager.instance.GiveNewDie(dieSlots[0].die.type);
+        }
+
 
 
         // This happens after, just resets all of the slots
