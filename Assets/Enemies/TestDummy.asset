@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507dd188c1d705a42bb12dce45491317, type: 3}
   m_Name: TestDummy
   m_EditorClassIdentifier: 
-  baseHealth: 50
-  health: -38
+  enemyID: TEST_DUMMY
+  health: 50
   attack: 0

@@ -17,9 +17,9 @@ MonoBehaviour:
   abilityDesc: Divides by the amount put into the ability
   uses: 1
   dieSlots:
-  - min: 0
-    max: 0
-    fillAmount: 0
-  - min: 0
-    max: 0
-    fillAmount: 0
+  - min: 1
+    max: 20
+    fillAmount: -1
+  - min: 1
+    max: 20
+    fillAmount: -1

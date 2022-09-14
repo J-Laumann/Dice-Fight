@@ -5,6 +5,7 @@ using UnityEngine;
 public class TransitionHandler : MonoBehaviour
 {
     Animator anim;
+    public static TransitionHandler instance;
 
     // Start is called before the first frame update
     void Start()
@@ -13,6 +14,7 @@ public class TransitionHandler : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
 
         DontDestroyOnLoad(this.gameObject);
+        instance = this;
     }
 
     // Update is called once per frame

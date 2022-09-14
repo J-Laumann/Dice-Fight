@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class EnterBattleScript : MonoBehaviour
 {
-    TransitionHandler trans;
+    public EnemyData enemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        trans = FindObjectOfType<TransitionHandler>().GetComponent<TransitionHandler>();
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class EnterBattleScript : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            trans.SlideIn();
+            TransitionHandler.instance.SlideIn();
             StartCoroutine("TriggerBattle");
         }
     }
@@ -32,8 +32,9 @@ public class EnterBattleScript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        trans.SlideOut();
+        TransitionHandler.instance.SlideOut();
 
+        GameManager.enemy = enemy;
         SceneManager.LoadScene("FightScene");
 
     }    

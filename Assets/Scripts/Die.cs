@@ -34,7 +34,7 @@ public class Die : MonoBehaviour
         image = GetComponent<Image>();
         valueText = GetComponentInChildren<TMP_Text>();
         value = UnityEngine.Random.Range(1, (int)type + 1);
-        valueText.text = "" + value;
+        StartCoroutine(RollDie());
 
         image.sprite = GameManager.instance.diceSprites[Array.IndexOf(Enum.GetValues(type.GetType()), type)];
     }
@@ -148,5 +148,16 @@ public class Die : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(ogSlot.gameObject);
+    }
+
+    IEnumerator RollDie()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            valueText.text = "" + UnityEngine.Random.Range(1, (int)type + 1);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        valueText.text = "" + value;
     }
 }

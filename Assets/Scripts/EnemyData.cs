@@ -5,12 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Enemy Data", order = 1)]
 public class EnemyData : ScriptableObject
 {
-    [SerializeField] private int baseHealth = 7;
+    public string enemyID;
     public int health;
     public int attack;
-
-    private void OnEnable()
-    {
-        health = baseHealth;
-    }
 }

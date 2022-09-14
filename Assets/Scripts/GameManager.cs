@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,8 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab;
     public Transform diceParent, abilitiesParent;
 
+    public Image enemyHealthbar;
     public EnemyData testEnemy;
     public static EnemyData enemy;
+    public int enemyHp;
 
     public static GameManager instance;
 
@@ -25,6 +28,8 @@ public class GameManager : MonoBehaviour
 
         if (enemy == null)
             enemy = testEnemy;
+
+        enemyHp = enemy.health;
 
         SetupUI();
     }
@@ -57,13 +62,23 @@ public class GameManager : MonoBehaviour
 
     public void AttackEnemyTest(int damage)
     {
-        enemy.health -= damage;
-        print("Damage: " + damage + "; Enemy health remaining: " + enemy.health);
+        enemyHp -= damage;
+        enemyHealthbar.fillAmount = (float)enemyHp / (float)enemy.health;
 
-        if(enemy.health <= 0)
+        if(enemyHp <= 0)
         {
-            print("Enemy Defeated!");
+            StartCoroutine(WinBattle());
         }
+    }
+
+    IEnumerator WinBattle()
+    {
+        TransitionHandler.instance.SlideIn();
+
+        yield return new WaitForSeconds(1.5f);
+
+        TransitionHandler.instance.SlideOut();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");
     }
 
     public void SetupAbilities()
