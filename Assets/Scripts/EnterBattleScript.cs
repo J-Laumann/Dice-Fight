@@ -9,10 +9,18 @@ public class EnterBattleScript : MonoBehaviour
     public string enemyID;
     public EnemyData enemy;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -23,7 +31,7 @@ public class EnterBattleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && PlayerPrefs.GetInt(enemyID+"_DEAD", 0) == 0)
+        if(other.CompareTag("Player") && PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 0)
         {
             TransitionHandler.instance.SlideIn();
             StartCoroutine("TriggerBattle");
@@ -40,6 +48,7 @@ public class EnterBattleScript : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerY", PlayerController.instance.transform.position.y);
         PlayerPrefs.SetFloat("PlayerZ", PlayerController.instance.transform.position.z);
         GameManager.enemy = enemy;
+        GameManager.enemyID = enemyID;
         SceneManager.LoadScene("FightScene");
 
     }    

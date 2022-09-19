@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Image enemyHealthbar;
     public EnemyData testEnemy;
     public static EnemyData enemy;
+    public static string enemyID;
     public int enemyHp;
     public static PlayerData playerData;
 
@@ -83,6 +84,7 @@ public class GameManager : MonoBehaviour
     IEnumerator WinBattle()
     {
         TransitionHandler.instance.SlideIn();
+        PlayerPrefs.SetInt(enemyID + "_DEAD", 1);
 
         yield return new WaitForSeconds(1.5f);
 
