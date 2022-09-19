@@ -10,17 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b26370831c5142442a9ca4ad50d6a9e6, type: 3}
-  m_Name: AttackDivide
+  m_Name: AttackFill20
   m_EditorClassIdentifier: 
-  abilityID: ATTACK_DIVIDE
-  abilityName: Attack Divide
-  abilityDesc: Dice 1 is divided by dice 2, Dice one is rerolled and given back to
-    the player
+  abilityID: ATTACK_FILL20
+  abilityName: Attack Fill 20
+  abilityDesc: Fill ability to 20 and do 18 damage
   uses: -1
   dieSlots:
   - min: 1
     max: 20
-    fillAmount: -1
-  - min: 1
-    max: 20
-    fillAmount: -1
+    fillAmount: 20
