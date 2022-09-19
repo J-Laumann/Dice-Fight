@@ -98,6 +98,12 @@ public class PlayerAbility : MonoBehaviour
             GameManager.instance.AttackEnemyTest(6);
         }
 
+        // If you fill the slot with a total of 20, it deals 18 damage
+        else if (ability.abilityID == "ATTACK_FILL20")
+        {
+            GameManager.instance.AttackEnemyTest(18);
+        }
+
         //Deals damage equal to dice 1 divided by dice 2. then reroles whatever dice was in the first slot
         else if(ability.abilityID == "ATTACK_DIVIDE")
         {
