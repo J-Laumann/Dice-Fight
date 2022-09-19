@@ -78,18 +78,24 @@ public class PlayerAbility : MonoBehaviour
         if(ability.abilityID == "REROLL")
         {
             GameManager.instance.GiveNewDie(dieSlots[0].die.type);
+            GameManager.instance.diceCount--;
+            GameManager.instance.diceCountCheck();
         }
 
         // Deals damage equal to the dice
         else if(ability.abilityID == "ATTACK")
         {
             GameManager.instance.AttackEnemyTest(dieSlots[0].die.value);
+            GameManager.instance.diceCount--;
+            GameManager.instance.diceCountCheck();
         }
 
         // Deals damage equal to the dice in the two slots multiplied
         else if(ability.abilityID == "ATTACK_MULT")
         {
             GameManager.instance.AttackEnemyTest(dieSlots[0].die.value * dieSlots[1].die.value);
+            GameManager.instance.diceCount -= 2;
+            GameManager.instance.diceCountCheck();
         }
 
         // If you fill the slot with a total of ten, it deals 6 damage
@@ -103,6 +109,8 @@ public class PlayerAbility : MonoBehaviour
         {
             GameManager.instance.AttackEnemyTest(dieSlots[0].die.value / dieSlots[1].die.value);
             GameManager.instance.GiveNewDie(dieSlots[0].die.type);
+            GameManager.instance.diceCount--;
+            GameManager.instance.diceCountCheck();
         }
 
 

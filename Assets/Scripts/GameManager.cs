@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public EnemyData testEnemy;
     public static EnemyData enemy;
     public int enemyHp;
+    public int playerHp = 15;
+    public int diceCount;
 
     public static GameManager instance;
 
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
             enemy = testEnemy;
 
         enemyHp = enemy.health;
+
+        diceCount = 0;
 
         SetupUI();
     }
@@ -51,7 +55,9 @@ public class GameManager : MonoBehaviour
         foreach(DieType die in myDice)
         {
             GiveNewDie(die);
+            diceCount++;
         }
+        print(diceCount);
     }
 
     public void GiveNewDie(DieType type)
@@ -92,5 +98,23 @@ public class GameManager : MonoBehaviour
             AbilityData tempData = playerAbility;
             newPA.Setup(tempData);
         }
+    }
+
+    public void diceCountCheck()
+    {
+        if (diceCount == 0)
+        {
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    IEnumerator EnemyTurn()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        playerHp -= 13;
+        print("Player health: " + playerHp);
+
+        SetupDice();
     }
 }
