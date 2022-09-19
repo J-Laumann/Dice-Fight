@@ -110,11 +110,22 @@ public class GameManager : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        foreach(Transform child in diceParent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach(Transform child in abilitiesParent)
+        {
+            Destroy(child.gameObject);
+        }
+
         yield return new WaitForSeconds(0.5f);
 
         playerHp -= 13;
         print("Player health: " + playerHp);
 
         SetupDice();
+        SetupAbilities();
     }
 }
