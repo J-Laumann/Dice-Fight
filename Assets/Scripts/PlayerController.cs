@@ -16,9 +16,20 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        instance = this;
+
+        Vector3 oldPos = new Vector3(PlayerPrefs.GetFloat("PlayerX", 0), PlayerPrefs.GetFloat("PlayerY", 1), PlayerPrefs.GetFloat("PlayerZ", 0));
+        transform.position = oldPos;
     }
 
     // Update is called once per frame

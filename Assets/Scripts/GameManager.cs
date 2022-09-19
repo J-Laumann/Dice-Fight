@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class PlayerData
+{
+    public int currentHp = 20;
+    public int maxHp = 20;
+}
+
+
 public class GameManager : MonoBehaviour
 {
 
@@ -18,8 +26,7 @@ public class GameManager : MonoBehaviour
     public EnemyData testEnemy;
     public static EnemyData enemy;
     public int enemyHp;
-    public int playerHp = 15;
-    public int diceCount;
+    public static PlayerData playerData;
 
     public static GameManager instance;
 
@@ -32,8 +39,6 @@ public class GameManager : MonoBehaviour
             enemy = testEnemy;
 
         enemyHp = enemy.health;
-
-        diceCount = 0;
 
         SetupUI();
     }
@@ -52,12 +57,10 @@ public class GameManager : MonoBehaviour
 
     public void SetupDice()
     {
-        foreach(DieType die in myDice)
+        foreach (DieType die in myDice)
         {
             GiveNewDie(die);
-            diceCount++;
         }
-        print(diceCount);
     }
 
     public void GiveNewDie(DieType type)
@@ -100,9 +103,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void diceCountCheck()
+    public IEnumerator DiceCountCheck()
     {
-        if (diceCount == 0)
+        yield return new WaitForEndOfFrame();
+        if (diceParent.childCount == 0)
         {
             StartCoroutine(EnemyTurn());
         }
@@ -122,8 +126,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        playerHp -= 13;
-        print("Player health: " + playerHp);
+        playerData.currentHp -= 13;
+        print("Player health: " + playerData.currentHp);
 
         SetupDice();
         SetupAbilities();

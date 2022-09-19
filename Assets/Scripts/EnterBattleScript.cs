@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EnterBattleScript : MonoBehaviour
 {
+    [Tooltip("THIS NEEDS TO BE UNIQUE")]
+    public string enemyID;
     public EnemyData enemy;
 
     // Start is called before the first frame update
@@ -21,7 +23,7 @@ public class EnterBattleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && PlayerPrefs.GetInt(enemyID+"_DEAD", 0) == 0)
         {
             TransitionHandler.instance.SlideIn();
             StartCoroutine("TriggerBattle");
@@ -34,6 +36,9 @@ public class EnterBattleScript : MonoBehaviour
 
         TransitionHandler.instance.SlideOut();
 
+        PlayerPrefs.SetFloat("PlayerX", PlayerController.instance.transform.position.x);
+        PlayerPrefs.SetFloat("PlayerY", PlayerController.instance.transform.position.y);
+        PlayerPrefs.SetFloat("PlayerZ", PlayerController.instance.transform.position.z);
         GameManager.enemy = enemy;
         SceneManager.LoadScene("FightScene");
 
