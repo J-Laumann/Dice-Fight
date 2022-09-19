@@ -21,6 +21,14 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         PlayerPrefs.DeleteAll();
+
+        PlayerData playerData = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString("PlayerData"));
+        if(playerData == null)
+        {
+            playerData = new PlayerData();
+        }
+
+        GameManager.playerData = playerData;
     }
 
     private void Start()
