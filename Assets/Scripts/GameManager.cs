@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
-    public DieType[] myDice;
-    public AbilityData[] playerAbilities;
+    public bool testing;
+    public List<DieType> myDice;
+    public List<AbilityData> playerAbilities;
 
     public Sprite[] diceSprites;
 
@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
 
         if(currentHp == 0)
             currentHp = PlayerData.maxHp;
+
+        if (!testing)
+        {
+            playerAbilities = PlayerData.pand.abilities;
+            myDice = PlayerData.pand.dice;
+        }
 
         SetupUI();
     }

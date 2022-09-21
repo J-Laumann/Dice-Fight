@@ -436,6 +436,10 @@ PrefabInstance:
       propertyPath: currentHp
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 516214899, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2437721285593175888, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
       propertyPath: m_Name
       value: FightCanvas

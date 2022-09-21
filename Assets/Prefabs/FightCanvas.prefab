@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43655a8d70b12445a8bbbf072253e31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testing: 0
   myDice: 040000000400000006000000060000000a00000014000000
   playerAbilities:
   - {fileID: 11400000, guid: 3c6725e620c71a8438ab827c46e66bc2, type: 2}
@@ -51,12 +52,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d219aa848d8d9c4190f308bbed2c3b1, type: 2}
   - {fileID: 11400000, guid: 582da5ff91cd58e41a1e737cba577db0, type: 2}
   diceSprites:
-  - {fileID: 21300000, guid: 3fc9b7f0e9576e442afaf3569f61dbe9, type: 3}
-  - {fileID: 21300000, guid: b51c370aef6fa744eb4eadf30b6a606d, type: 3}
-  - {fileID: 21300000, guid: 93dc6c02af300d641ba88d96e41ad7d0, type: 3}
-  - {fileID: 21300000, guid: cee1fc2dcaa5309478b622a7e233ada4, type: 3}
-  - {fileID: 21300000, guid: 43f94fedb14001845997b4c0f0cb57f3, type: 3}
-  - {fileID: 21300000, guid: 11b9d7e9a0eb5c9448b85f380b3c65a3, type: 3}
+  - {fileID: 21300000, guid: 571638b1d61d3b645a4007d617371e64, type: 3}
+  - {fileID: 21300000, guid: 571638b1d61d3b645a4007d617371e64, type: 3}
+  - {fileID: 21300000, guid: cc2c5dec4bba32f4dbd6e61484ec2f9d, type: 3}
+  - {fileID: 21300000, guid: 7ef9656dd54735d4293cbb021d328313, type: 3}
+  - {fileID: 21300000, guid: a94f08bde5680544ea30776a09ae8b03, type: 3}
+  - {fileID: 21300000, guid: 2a120868c82f09440ab84a3f69dc22d5, type: 3}
+  - {fileID: 21300000, guid: 4cd35e948d72c8b4ba17178d1f66d2cb, type: 3}
   newDiePrefab: {fileID: 8326066842437473017, guid: 0fa59047970e9244a840fed4374a90d7, type: 3}
   dieSlotPrefab: {fileID: 8326066842437473017, guid: e916af8de74102a4891587df23588e23, type: 3}
   abilityPrefab: {fileID: 2296040977897703201, guid: 4bdf6aafb177d8c40b4f24bff0d459c3, type: 3}

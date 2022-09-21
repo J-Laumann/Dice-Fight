@@ -8,6 +8,9 @@ public class MainMenuController : MonoBehaviour
 
     public Button continueButton, newGameButton;
 
+    public List<AbilityData> startingAbilities;
+    public List<DieType> startingDice;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,11 @@ public class MainMenuController : MonoBehaviour
     {
         PlayerData.maxHp = PlayerPrefs.GetInt("maxHp", 20);
         PlayerData.souls = PlayerPrefs.GetInt("souls", 0);
+
+        if (PlayerPrefs.HasKey("pand"))
+            PlayerData.pand = JsonUtility.FromJson<PlayerAnD>(PlayerPrefs.GetString("pand"));
+        else
+            PlayerData.pand = new PlayerAnD(startingAbilities, startingDice);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");
     }

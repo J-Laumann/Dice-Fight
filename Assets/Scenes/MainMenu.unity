@@ -778,6 +778,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continueButton: {fileID: 370142689}
   newGameButton: {fileID: 2009603897}
+  startingAbilities:
+  - {fileID: 11400000, guid: 3c6725e620c71a8438ab827c46e66bc2, type: 2}
+  - {fileID: 11400000, guid: bf17fdb6f18f7cc44a922f4a8c298f04, type: 2}
+  startingDice: 040000000400000006000000
 --- !u!4 &1410909413
 Transform:
   m_ObjectHideFlags: 0
