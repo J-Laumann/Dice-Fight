@@ -111,8 +111,6 @@ public class PlayerAbility : MonoBehaviour
             GameManager.instance.GiveNewDie(dieSlots[0].die.type);
         }
 
-        StartCoroutine(GameManager.instance.DiceCountCheck());
-
 
         // This happens after, just resets all of the slots
         for(int i = 0; i < dieSlots.Count; i++)

@@ -148,6 +148,7 @@ public class Die : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(ogSlot.gameObject);
+        GameManager.instance.StartCoroutine(GameManager.instance.DiceCountCheck());
     }
 
     IEnumerator RollDie()
