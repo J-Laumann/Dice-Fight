@@ -1838,14 +1838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocks:
-  - soulCost: 0
-    ability: {fileID: 0}
-    die: 0
-  - soulCost: 0
-    ability: {fileID: 0}
-    die: 0
-  - soulCost: 0
-    ability: {fileID: 0}
+  - soulCost: 1
+    ability: {fileID: 11400000, guid: 8d219aa848d8d9c4190f308bbed2c3b1, type: 2}
     die: 0
 --- !u!1 &1754869853
 GameObject:
