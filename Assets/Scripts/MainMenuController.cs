@@ -11,7 +11,7 @@ public class MainMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.GetInt("Souls", 0) > 0)
+        if(PlayerPrefs.HasKey("souls"))
         {
             continueButton.interactable = true;
         }
@@ -25,6 +25,10 @@ public class MainMenuController : MonoBehaviour
 
     public void Continue()
     {
+        PlayerData.maxHp = PlayerPrefs.GetInt("maxHp", 20);
+        PlayerData.currentHp = PlayerPrefs.GetInt("currentHp", PlayerData.maxHp);
+        PlayerData.souls = PlayerPrefs.GetInt("souls", 0);
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");
     }
 

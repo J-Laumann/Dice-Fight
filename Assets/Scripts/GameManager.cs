@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class PlayerData
-{
-    public int currentHp = 20;
-    public int maxHp = 20;
-}
-
-
 public class GameManager : MonoBehaviour
 {
 
@@ -128,8 +120,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        playerData.currentHp -= 13;
-        print("Player health: " + playerData.currentHp);
+        PlayerData.currentHp -= 13;
+        print("Player health: " + PlayerData.currentHp);
 
         SetupDice();
         SetupAbilities();
