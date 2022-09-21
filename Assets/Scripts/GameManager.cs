@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Transform diceParent, abilitiesParent;
 
     public Image enemyHealthbar;
-    
+    public Image playerHealthbar;
     public static EnemyData enemy;
     public static string enemyID;
     public int enemyHp;
@@ -127,7 +127,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         currentHp -= 13;
-        print("Player health: " + currentHp);
+
+        playerHealthbar.fillAmount = (float)currentHp / (float) PlayerData.maxHp;
 
         SetupDice();
         SetupAbilities();
