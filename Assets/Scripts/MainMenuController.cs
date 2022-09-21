@@ -26,7 +26,6 @@ public class MainMenuController : MonoBehaviour
     public void Continue()
     {
         PlayerData.maxHp = PlayerPrefs.GetInt("maxHp", 20);
-        PlayerData.currentHp = PlayerPrefs.GetInt("currentHp", PlayerData.maxHp);
         PlayerData.souls = PlayerPrefs.GetInt("souls", 0);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");

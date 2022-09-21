@@ -15,11 +15,14 @@ public class GameManager : MonoBehaviour
     public Transform diceParent, abilitiesParent;
 
     public Image enemyHealthbar;
-    public EnemyData testEnemy;
+    
     public static EnemyData enemy;
     public static string enemyID;
     public int enemyHp;
-    public static PlayerData playerData;
+
+    [Header("TESTING VARIABLES")]
+    public int currentHp;
+    public EnemyData testEnemy;
 
     public static GameManager instance;
 
@@ -32,6 +35,9 @@ public class GameManager : MonoBehaviour
             enemy = testEnemy;
 
         enemyHp = enemy.health;
+
+        if(currentHp == 0)
+            currentHp = PlayerData.maxHp;
 
         SetupUI();
     }
@@ -120,8 +126,8 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        PlayerData.currentHp -= 13;
-        print("Player health: " + PlayerData.currentHp);
+        currentHp -= 13;
+        print("Player health: " + currentHp);
 
         SetupDice();
         SetupAbilities();
