@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         TransitionHandler.instance.SlideIn();
         PlayerPrefs.SetInt(enemyID + "_DEAD", 1);
+        PlayerData.souls++;
 
         yield return new WaitForSeconds(1.5f);
 
