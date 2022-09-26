@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     public static EnemyData enemy;
     public static string enemyID;
     public int enemyHp;
+    private AudioSource[] aud;
+
+    [Header("Sounds")]
+    public AudioClip singleDie;
+    public AudioClip multipleDice;
+    public AudioClip[] attackSounds;
 
     [Header("TESTING VARIABLES")]
     public int currentHp;
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour
             enemy = testEnemy;
 
         enemyHp = enemy.health;
+        aud = GetComponents<AudioSource>();
 
         if(currentHp == 0)
             currentHp = PlayerData.maxHp;
@@ -62,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void SetupDice()
     {
+        aud[0].PlayOneShot(multipleDice, 1.0f);
         foreach (DieType die in myDice)
         {
             GiveNewDie(die);
@@ -70,12 +78,14 @@ public class GameManager : MonoBehaviour
 
     public void GiveNewDie(DieType type)
     {
+        aud[0].PlayOneShot(singleDie, 1.0f);
         GameObject newDie = Instantiate(newDiePrefab, diceParent);
         newDie.GetComponentInChildren<Die>().type = type;
     }
 
     public void AttackEnemyTest(int damage)
     {
+        aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
         enemyHp -= damage;
         enemyHealthbar.fillAmount = (float)enemyHp / (float)enemy.health;
 
@@ -131,11 +141,14 @@ public class GameManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
+        aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
         currentHp -= 13;
 
         playerHealthbar.fillAmount = (float)currentHp / (float) PlayerData.maxHp;
+
+        yield return new WaitForSeconds(1f);
 
         SetupDice();
         SetupAbilities();
