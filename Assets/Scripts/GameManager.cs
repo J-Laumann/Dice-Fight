@@ -127,6 +127,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(EnemyTurn());
         }
+
+        if (abilitiesParent.GetChild(0).GetComponent<PlayerAbility>().uses == 0)
+        {
+            StartCoroutine(EnemyTurn());
+        } 
     }
 
     IEnumerator EnemyTurn()
@@ -149,6 +154,16 @@ public class GameManager : MonoBehaviour
         playerHealthbar.fillAmount = (float)currentHp / (float) PlayerData.maxHp;
 
         yield return new WaitForSeconds(1f);
+
+        if (currentHp <= 0)
+        {
+            TransitionHandler.instance.SlideIn();
+
+            yield return new WaitForSeconds(1.5f);
+
+            TransitionHandler.instance.SlideOut();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");
+        }
 
         SetupDice();
         SetupAbilities();
