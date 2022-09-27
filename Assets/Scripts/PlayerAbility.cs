@@ -37,7 +37,7 @@ public class PlayerAbility : MonoBehaviour
             DieSlot slot = newSlot.GetComponent<DieSlot>();
             dieSlots.Add(slot);
             slot.ability = this;
-            slot.data = new DieSlotData(ability.dieSlots[i]);
+            slot.data = ability.dieSlots[i];
         }
 
         nameText.text = ability.abilityName;
@@ -120,7 +120,9 @@ public class PlayerAbility : MonoBehaviour
             if (slot.die)
                 Destroy(slot.die.gameObject);
 
-            slot.data.fillAmount = ability.dieSlots[i].fillAmount;
+            // TODO
+            int aIndex = GameManager.instance.baseAbilities.IndexOf(ability);
+            slot.data.fillAmount = GameManager.instance.baseAbilities[aIndex].dieSlots[i].fillAmount;
 
             slot.UpdateUI();
         }

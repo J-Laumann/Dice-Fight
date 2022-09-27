@@ -15,6 +15,11 @@ public class EnterBattleScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        else if(PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 2)
+        {
+            MeshRenderer mr = GetComponent<MeshRenderer>();
+            mr.material.color = Color.blue;
+        }
     }
 
     // Start is called before the first frame update

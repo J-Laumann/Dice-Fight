@@ -7,13 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public bool testing;
     public List<DieType> myDice;
-    public List<AbilityData> playerAbilities;
+    List<AbilityData> myAbilities;
+    public List<AbilityData> baseAbilities;
 
     public Sprite[] diceSprites;
 
     public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab;
     public Transform diceParent, abilitiesParent;
 
+    public Button endTurnButton;
     public Image enemyHealthbar;
     public Image playerHealthbar;
     public static EnemyData enemy;
@@ -48,8 +50,14 @@ public class GameManager : MonoBehaviour
 
         if (!testing)
         {
-            playerAbilities = PlayerData.pand.abilities;
+            baseAbilities = PlayerData.pand.abilities;
             myDice = PlayerData.pand.dice;
+        }
+
+        myAbilities = new List<AbilityData>();
+        for (int i = 0; i < baseAbilities.Count; i++)
+        {
+            myAbilities.Add(new AbilityData(baseAbilities[i]));
         }
 
         SetupUI();
@@ -109,7 +117,7 @@ public class GameManager : MonoBehaviour
 
     public void SetupAbilities()
     {
-        foreach (AbilityData playerAbility in playerAbilities)
+        foreach (AbilityData playerAbility in myAbilities)
         {
             GameObject newAbility = Instantiate(abilityPrefab, abilitiesParent);
 
@@ -127,17 +135,19 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(EnemyTurn());
         }
+    }
 
-        if (abilitiesParent.GetChild(0).GetComponent<PlayerAbility>().uses == 0)
-        {
-            StartCoroutine(EnemyTurn());
-        } 
+    public void EndTurn()
+    {
+        StartCoroutine(EnemyTurn());
     }
 
     IEnumerator EnemyTurn()
     {
         foreach(Transform child in diceParent)
         {
+            if (child.GetComponent<DieSlot>().die)
+                child.GetComponent<DieSlot>().die.killing = true;
             Destroy(child.gameObject);
         }
 
@@ -146,10 +156,20 @@ public class GameManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        endTurnButton.gameObject.SetActive(false);
+
         yield return new WaitForSeconds(1f);
 
         aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
-        currentHp -= 13;
+
+        if (enemy.type == EnemyType.DAMAGE)
+        {
+            currentHp -= enemy.attack;
+        }
+        else if(enemy.type == EnemyType.HIGHROLLER)
+        {
+            currentHp -= enemy.attack;
+        }
 
         playerHealthbar.fillAmount = (float)currentHp / (float) PlayerData.maxHp;
 
@@ -157,6 +177,8 @@ public class GameManager : MonoBehaviour
 
         if (currentHp <= 0)
         {
+            PlayerPrefs.SetInt(enemyID + "_DEAD", 2);
+
             TransitionHandler.instance.SlideIn();
 
             yield return new WaitForSeconds(1.5f);
@@ -166,6 +188,34 @@ public class GameManager : MonoBehaviour
         }
 
         SetupDice();
+
+        if(enemy.type == EnemyType.HIGHROLLER)
+        {
+            StartCoroutine(HighRollerEffect());
+        }
+
         SetupAbilities();
+        endTurnButton.gameObject.SetActive(true);
+    }
+
+    public IEnumerator HighRollerEffect()
+    {
+        yield return new WaitForSeconds(1f);
+        // Yeehaw here
+        Debug.LogError("YEEHAW!!");
+
+        int highNumb = 0;
+        Die highDie = null;
+        foreach(Transform child in diceParent)
+        {
+            Die die = child.GetComponent<DieSlot>().die;
+            if(die.value >= highNumb)
+            {
+                highNumb = die.value;
+                highDie = die;
+            }
+        }
+
+        highDie.StartCoroutine(highDie.RollDie());
     }
 }

@@ -25,6 +25,8 @@ public class Die : MonoBehaviour
     public bool beingDragged;
     public DieSlot slot, ogSlot;
 
+    public bool killing;
+
     Image image;
     TMP_Text valueText;
 
@@ -34,7 +36,7 @@ public class Die : MonoBehaviour
         // I want to rollll the dice
         image = GetComponent<Image>();
         valueText = GetComponentInChildren<TMP_Text>();
-        value = UnityEngine.Random.Range(1, (int)type + 1);
+
         StartCoroutine(RollDie());
 
         image.sprite = GameManager.instance.diceSprites[Array.IndexOf(Enum.GetValues(type.GetType()), type)];
@@ -148,16 +150,21 @@ public class Die : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(ogSlot.gameObject);
-        GameManager.instance.StartCoroutine(GameManager.instance.DiceCountCheck());
+        if (!killing)
+        {
+            Destroy(ogSlot.gameObject);
+            GameManager.instance.StartCoroutine(GameManager.instance.DiceCountCheck());
+        }
     }
 
-    IEnumerator RollDie()
+    public IEnumerator RollDie()
     {
+        value = UnityEngine.Random.Range(1, (int)type + 1);
+
         for (int i = 0; i < 10; i++)
         {
             valueText.text = "" + UnityEngine.Random.Range(1, (int)type + 1);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.07f);
         }
 
         valueText.text = "" + value;
