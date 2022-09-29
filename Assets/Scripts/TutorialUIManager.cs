@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ Brian Sida
+ Project 2
+ Description: Manages tutorial UI
+*/
 public class TutorialUIManager : MonoBehaviour
 {
     public Text nameText;
@@ -17,6 +22,8 @@ public class TutorialUIManager : MonoBehaviour
 
     public void OverWorldTutorial(Tutorial tutorial)
     {
+        // WIP: Add code to show dialogue box (animator?)
+
         nameText.text = tutorial.name;
 
         sentences.Clear();
@@ -60,6 +67,7 @@ public class TutorialUIManager : MonoBehaviour
 
     void EndTutorial()
     {
+        // WIP: Add code to hide dialogue box
         Debug.Log("End of tutorial.");
     }
 }
