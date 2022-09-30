@@ -9,6 +9,8 @@ public class EnterBattleScript : MonoBehaviour
     public string enemyID;
     public EnemyData enemy;
 
+    public static bool firstFight = true;
+
     private void Awake()
     {
         if (PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 1)
@@ -36,10 +38,12 @@ public class EnterBattleScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 0)
+        if (other.CompareTag("Player") && PlayerPrefs.GetInt(enemyID + "_DEAD", 0) == 0)
         {
+            firstFight = false;
             TransitionHandler.instance.SlideIn();
             StartCoroutine("TriggerBattle");
+            FindObjectOfType<TutorialTrigger>().TriggerTutorial();
         }
     }
 

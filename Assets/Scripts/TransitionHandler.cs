@@ -31,11 +31,21 @@ public class TransitionHandler : MonoBehaviour
         anim.Play("Slide_In");
     }
 
+    public void DialogueOpen()
+    {
+        anim.Play("Dialogue_Open");
+    }
+
     /// <summary>
     /// Plays the Slide out transition.
     /// </summary>
     public void SlideOut()
     {
         anim.Play("Slide_Out");
+    }
+
+    public void DialogueClose()
+    {
+        anim.Play("Dialogue_Close");
     }
 }

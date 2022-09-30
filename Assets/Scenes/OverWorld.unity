@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 134987768}
   m_Layer: 0
-  m_Name: Tutorial UI
+  m_Name: Overworld Tutorial UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219.04, y: 61.949}
+  m_AnchoredPosition: {x: -217, y: 61.949}
   m_SizeDelta: {x: 361.9174, y: 95.958435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445470743
@@ -953,7 +953,7 @@ Animator:
   m_GameObject: {fileID: 445470741}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 6d2681e6578da6b4bba82bf5853112c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

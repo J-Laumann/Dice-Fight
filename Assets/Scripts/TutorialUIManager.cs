@@ -22,7 +22,9 @@ public class TutorialUIManager : MonoBehaviour
 
     public void OverWorldTutorial(Tutorial tutorial)
     {
-        // WIP: Add code to show dialogue box (animator?)
+        // Shows dialogue box
+        TransitionHandler.instance.DialogueOpen();
+        Debug.Log("Dialogue Open.");
 
         nameText.text = tutorial.name;
 
@@ -39,6 +41,8 @@ public class TutorialUIManager : MonoBehaviour
 
     public void BattleTutorial(Tutorial tutorial)
     {
+        TransitionHandler.instance.DialogueOpen();
+
         nameText.text = tutorial.name;
 
         sentences.Clear();
@@ -60,14 +64,14 @@ public class TutorialUIManager : MonoBehaviour
             return;
         }
 
-        // If queue isn't empty, print dequeue the next tutorial
+        // If queue isn't empty, print the next sentence
         string tutorial = sentences.Dequeue();
         tutorialText.text = tutorial;
     }
 
     void EndTutorial()
     {
-        // WIP: Add code to hide dialogue box
+        TransitionHandler.instance.DialogueClose();
         Debug.Log("End of tutorial.");
     }
 }
