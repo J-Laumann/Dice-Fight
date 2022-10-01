@@ -5,7 +5,7 @@ using UnityEngine;
 public class TransitionHandler : MonoBehaviour
 {
     Animator anim;
-    public Animator tutorialAnim;
+    private Animator tutorialAnim;
     public static TransitionHandler instance;
 
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class TransitionHandler : MonoBehaviour
 
     public void DialogueOpen()
     {
+        tutorialAnim = GameObject.FindGameObjectWithTag("Dialogue Box").GetComponent<Animator>();
         tutorialAnim.Play("Dialogue_Open");
     }
 
