@@ -11,6 +11,14 @@ public class TutorialTrigger : MonoBehaviour
 {
     public Tutorial dialogue;
 
+    private void Awake()
+    {
+        if (PlayerData.souls != 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void TriggerTutorial()
     {
         // Checks if player is in their first fight in the game

@@ -858,12 +858,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Overworld Movement
+    name: '  Overworld Movement'
     sentences:
-    - Control player's movement by using WASD to move around the world.
-    - 'In the world, you can come across enemies that vary in difficulty each with
-      different abilites. '
-    - Go and approach an enemy to learn more.
+    - "  Control player's movement by using WASD to move \t\n  around the world."
+    - "  In the world, you can come across enemies that vary in \t\n  difficulty
+      each with different abilites. "
+    - '  Go and approach an enemy to learn more.'
 --- !u!1 &445470741
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +902,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -217, y: 61.949}
+  m_AnchoredPosition: {x: -210, y: 61.949}
   m_SizeDelta: {x: 361.9174, y: 95.958435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445470743
@@ -1845,6 +1845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d64174ed6220340a3ec863165c2da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialAnim: {fileID: 445470745}
 --- !u!1001 &1192085055
 PrefabInstance:
   m_ObjectHideFlags: 0
