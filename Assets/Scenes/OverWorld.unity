@@ -2414,10 +2414,14 @@ MonoBehaviour:
   dialogue:
     name: '  Overworld Movement'
     sentences:
-    - "  Control player's movement by using WASD to move \t\n  around the world."
+    - "  Welcome to Earth, reaper in training. Year after year,\t\n  humans have
+      been getting more confident in their ability\t\n  to cheat death."
+    - "  It's your job to reap as many souls as you can and put\t\n  the fear of
+      death back into these mortals."
+    - "  Control the player's movement by using WASD to move \t\n  around the world."
     - "  In the world, you can come across enemies that vary in \t\n  difficulty
       each with different abilites. "
-    - '  Go and approach an enemy to learn more.'
+    - '  Go and approach an enemy (red capsule) to learn more.'
 --- !u!1 &445470741
 GameObject:
   m_ObjectHideFlags: 0
