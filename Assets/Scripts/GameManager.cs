@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public AudioClip singleDie;
     public AudioClip multipleDice;
     public AudioClip[] attackSounds;
+    public AudioClip[] highRollerSounds;
 
     [Header("TESTING VARIABLES")]
     public int currentHp;
@@ -203,6 +204,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         // Yeehaw here
         Debug.LogError("YEEHAW!!");
+        aud[1].PlayOneShot(highRollerSounds[Random.Range(0, highRollerSounds.Length)], 1.0f);
 
         int highNumb = 0;
         Die highDie = null;
@@ -216,6 +218,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        yield return new WaitForSeconds(1f);
+        aud[0].PlayOneShot(singleDie, 1f);
         highDie.StartCoroutine(highDie.RollDie());
     }
 }
