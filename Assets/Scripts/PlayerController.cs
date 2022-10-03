@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    private bool isPaused = false;
+    public GameObject pauseMenu;
+
     private void Awake()
     {
         PlayerData.SaveData();
@@ -35,17 +38,37 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forwardInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+        if (!isPaused)
+        {
+            forwardInput = Input.GetAxis("Vertical");
+            horizontalInput = Input.GetAxis("Horizontal");
 
-        Vector3 tempV = rb.velocity;
+            Vector3 tempV = rb.velocity;
 
-        tempV.x = horizontalInput * speed;
-        tempV.z = forwardInput * speed;
+            tempV.x = horizontalInput * speed;
+            tempV.z = forwardInput * speed;
 
-        rb.velocity = tempV;
+            rb.velocity = tempV;
 
-        tempV.y = 0;
-        transform.LookAt(tempV.normalized + transform.position);
+            tempV.y = 0;
+            transform.LookAt(tempV.normalized + transform.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && !isPaused)
+        {
+            isPaused = true;
+            pauseMenu.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.P) && isPaused)
+        {
+            isPaused = false;
+            pauseMenu.SetActive(false);
+        }
+    }
+
+    public void ResumeButton()
+    {
+        isPaused = false;
+        pauseMenu.SetActive(false);
     }
 }
