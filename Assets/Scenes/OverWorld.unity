@@ -2863,6 +2863,9 @@ MonoBehaviour:
     - "  It's your job to reap as many souls as you can and put\t\n  the fear of
       death back into these mortals."
     - "  Control the player's movement by using WASD to move \t\n  around the world."
+    - "  When in the overworld, you can press P to open the\t\n  pause menu. From
+      here, you can resume playing,\t\n  restart the game, or return to the main
+      menu."
     - "  In the world, you can come across enemies that vary in \t\n  difficulty
       each with different abilites. "
     - '  Go and approach an enemy (red capsule) to learn more.'
