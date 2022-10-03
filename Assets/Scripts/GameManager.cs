@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     [Header("Sounds")]
     public AudioClip singleDie;
     public AudioClip multipleDice;
+    public AudioClip victory;
+    public AudioClip defeat;
     public AudioClip[] attackSounds;
     public AudioClip[] highRollerSounds;
 
@@ -106,6 +108,12 @@ public class GameManager : MonoBehaviour
 
     IEnumerator WinBattle()
     {
+        aud[2].Stop();
+        yield return new WaitForSeconds(0.2f);
+        aud[0].PlayOneShot(victory, 1.0f);
+
+        yield return new WaitForSeconds(0.7f);
+
         TransitionHandler.instance.SlideIn();
         PlayerPrefs.SetInt(enemyID + "_DEAD", 1);
         PlayerData.souls++;
@@ -178,6 +186,12 @@ public class GameManager : MonoBehaviour
 
         if (currentHp <= 0)
         {
+            aud[2].Stop();
+            yield return new WaitForSeconds(0.2f);
+            aud[0].PlayOneShot(defeat, 1.0f);
+
+            yield return new WaitForSeconds(0.7f);
+
             PlayerPrefs.SetInt(enemyID + "_DEAD", 2);
 
             TransitionHandler.instance.SlideIn();
