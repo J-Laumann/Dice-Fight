@@ -239,6 +239,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         aud[0].PlayOneShot(singleDie, 1f);
         highDie.StartCoroutine(highDie.RollDie());
+
+        if(enemy.enemyID == "FINAL_BOSS")
+        {
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(HighRollerEffect());
+        }
     }
 
     public IEnumerator FishermanEffect()
