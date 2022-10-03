@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
-    private bool isPaused = false;
+    public bool isPaused = false;
     public GameObject pauseMenu;
 
     private void Awake()
