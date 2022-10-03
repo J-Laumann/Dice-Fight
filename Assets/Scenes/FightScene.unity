@@ -946,11 +946,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: '  Bob'
+    name: Battle Mechanics
     sentences:
-    - '  hi'
-    - '  my name'
-    - '  Jeff'
+    - At the start of each battle, dice are rolled to decide what you, the player,
+      can do.
+    - Each ability has different requirements to meet, and depending on your roll,
+      you may be forced to end your turn without doing anything.
+    - You gain more dice as you progress throughout the game. This unlocks more abilities
+      for you to use in battle.
+    - But beware, the farther you progress in the game, the more difficult and challenging
+      the enemies will get, so good luck!
 --- !u!114 &1914634794
 MonoBehaviour:
   m_ObjectHideFlags: 0
