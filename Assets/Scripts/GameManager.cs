@@ -46,10 +46,10 @@ public class GameManager : MonoBehaviour
             enemy = testEnemy;
 
         enemyHp = enemy.health;
+
         aud = GetComponents<AudioSource>();
 
-        if(currentHp == 0)
-            currentHp = PlayerData.maxHp;
+        currentHp = PlayerData.maxHp;
 
         if (!testing)
         {
@@ -191,8 +191,6 @@ public class GameManager : MonoBehaviour
             aud[0].PlayOneShot(defeat, 1.0f);
 
             yield return new WaitForSeconds(0.7f);
-
-            PlayerPrefs.SetInt(enemyID + "_DEAD", 2);
 
             TransitionHandler.instance.SlideIn();
 
