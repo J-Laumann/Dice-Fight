@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1047,16 +1047,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Battle Mechanics
+    name: '  Battle Mechanics'
     sentences:
-    - At the start of each battle, dice are rolled to decide what you, the player,
-      can do.
-    - Each ability has different requirements to meet, and depending on your roll,
-      you may be forced to end your turn without doing anything.
-    - You gain more dice as you progress throughout the game. This unlocks more abilities
-      for you to use in battle.
-    - But beware, the farther you progress in the game, the more difficult and challenging
-      the enemies will get, so good luck!
+    - "  At the start of each battle, dice are rolled to decide what\t\n  you, the
+      player, can do."
+    - "  Each ability has different requirements to meet, and\t\n  depending on how
+      many ability uses you have, you may\t\n  be forced to end your turn without
+      doing anything."
+    - "  You gain more dice as you progress throughout the \t\n  game. This unlocks
+      more abilities for you to use in battle."
+    - "  Enemies can have different abilities such as the high\t\n  roller, which
+      rerolls the die with the highest value at the\t\n  start of the player's turn."
+    - "  Be warned, the farther you progress in the game, the\n  more difficult and
+      challenging the enemies will get, so\t\n  good luck!"
 --- !u!114 &1914634794
 MonoBehaviour:
   m_ObjectHideFlags: 0
