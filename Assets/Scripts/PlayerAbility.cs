@@ -120,7 +120,6 @@ public class PlayerAbility : MonoBehaviour
             if (slot.die)
                 Destroy(slot.die.gameObject);
 
-            // TODO
             int aIndex = GameManager.instance.baseAbilities.IndexOf(ability);
             slot.data.fillAmount = GameManager.instance.baseAbilities[aIndex].dieSlots[i].fillAmount;
 

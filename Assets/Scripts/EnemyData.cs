@@ -5,7 +5,8 @@ using UnityEngine;
 public enum EnemyType
 {
     DAMAGE,
-    HIGHROLLER
+    HIGHROLLER,
+    FISHERMAN
 }
 
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Enemy Data", order = 1)]

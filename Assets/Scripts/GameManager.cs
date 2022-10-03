@@ -208,6 +208,10 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(HighRollerEffect());
         }
+        else if(enemy.type == EnemyType.FISHERMAN)
+        {
+            StartCoroutine(FishermanEffect());
+        }
 
         SetupAbilities();
         endTurnButton.gameObject.SetActive(true);
@@ -235,5 +239,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         aud[0].PlayOneShot(singleDie, 1f);
         highDie.StartCoroutine(highDie.RollDie());
+    }
+
+    public IEnumerator FishermanEffect()
+    {
+        int rand = Random.Range(0, diceParent.childCount - 1);
+        GameObject chosenDie = diceParent.GetChild(rand).gameObject;
+        float speed = 300;
+        while (chosenDie.transform.position.y < 1000)
+        {
+            chosenDie.transform.Translate(Vector3.up * Time.deltaTime * speed);
+            yield return new WaitForEndOfFrame();
+        }
+        Destroy(chosenDie);
     }
 }
