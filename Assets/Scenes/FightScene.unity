@@ -1342,6 +1342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1830702615, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 846c52f857140844c98d24aa0c04a2d7, type: 3}
     - target: {fileID: 2437721285593175888, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
       propertyPath: m_Name
       value: FightCanvas
