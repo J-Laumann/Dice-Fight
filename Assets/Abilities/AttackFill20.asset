@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AttackFill20
   m_EditorClassIdentifier: 
   abilityID: ATTACK_FILL20
-  abilityName: Attack Fill 20
-  abilityDesc: Fill ability to 20 and do 18 damage
+  abilityName: 20-20 Laser Vision
+  abilityDesc: Does 25 damage
   uses: -1
   dieSlots:
   - min: 1

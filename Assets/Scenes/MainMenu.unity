@@ -781,6 +781,7 @@ MonoBehaviour:
   startingAbilities:
   - {fileID: 11400000, guid: 3c6725e620c71a8438ab827c46e66bc2, type: 2}
   - {fileID: 11400000, guid: bf17fdb6f18f7cc44a922f4a8c298f04, type: 2}
+  - {fileID: 11400000, guid: 72ccdee6cbb3af342a7c6fc1579c19d6, type: 2}
   startingDice: 040000000400000006000000
 --- !u!4 &1410909413
 Transform:

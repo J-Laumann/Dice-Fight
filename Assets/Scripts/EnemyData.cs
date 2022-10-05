@@ -6,7 +6,8 @@ public enum EnemyType
 {
     DAMAGE,
     HIGHROLLER,
-    FISHERMAN
+    FISHERMAN,
+    BURNING
 }
 
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Enemy Data", order = 1)]

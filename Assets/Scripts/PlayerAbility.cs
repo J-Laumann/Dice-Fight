@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerAbility : MonoBehaviour
 {
 
-    public AbilityData ability;
+    public AbilityData ability, baseAbility;
     public int uses;
 
     public TMP_Text nameText, descText, usesText;
@@ -18,7 +18,8 @@ public class PlayerAbility : MonoBehaviour
     public void Setup(AbilityData _ability)
     {
         dieSlots = new List<DieSlot>();
-        ability = _ability;
+        baseAbility = _ability;
+        ability = new AbilityData(_ability);
         uses = _ability.uses;
         GenerateUI();
     }
@@ -92,23 +93,27 @@ public class PlayerAbility : MonoBehaviour
             GameManager.instance.AttackEnemyTest(dieSlots[0].die.value * dieSlots[1].die.value);
         }
 
-        // If you fill the slot with a total of ten, it deals 6 damage
-        else if(ability.abilityID == "ATTACK_FILL10")
+        // If you fill the slot with a total of 8, it deals 10 damage
+        else if(ability.abilityID == "ATTACK_FILL8")
         {
-            GameManager.instance.AttackEnemyTest(6);
+            GameManager.instance.AttackEnemyTest(10);
         }
 
-        // If you fill the slot with a total of 20, it deals 18 damage
+        // If you fill the slot with a total of 20, it deals 25 damage
         else if (ability.abilityID == "ATTACK_FILL20")
         {
-            GameManager.instance.AttackEnemyTest(18);
+            GameManager.instance.AttackEnemyTest(25);
         }
 
-        //Deals damage equal to dice 1 divided by dice 2. then reroles whatever dice was in the first slot
-        else if(ability.abilityID == "ATTACK_DIVIDE")
+        // Heals half of the dice value
+        else if(ability.abilityID == "HEAL_DIV2")
         {
-            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value / dieSlots[1].die.value);
-            GameManager.instance.GiveNewDie(dieSlots[0].die.type);
+            GameManager.instance.TakeDamage(-dieSlots[0].die.value / 2);
+        }
+        // Heals for dice value
+        else if(ability.abilityID == "HEAL")
+        {
+            GameManager.instance.TakeDamage(-dieSlots[0].die.value);
         }
 
 
@@ -120,8 +125,7 @@ public class PlayerAbility : MonoBehaviour
             if (slot.die)
                 Destroy(slot.die.gameObject);
 
-            int aIndex = GameManager.instance.baseAbilities.IndexOf(ability);
-            slot.data.fillAmount = GameManager.instance.baseAbilities[aIndex].dieSlots[i].fillAmount;
+            slot.data.fillAmount = baseAbility.dieSlots[i].fillAmount;
 
             slot.UpdateUI();
         }

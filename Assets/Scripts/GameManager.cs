@@ -97,13 +97,18 @@ public class GameManager : MonoBehaviour
     public void AttackEnemyTest(int damage)
     {
         aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
-        enemyHp -= damage;
-        enemyHealthbar.fillAmount = (float)enemyHp / (float)enemy.health;
+        TakeDamage(damage);
 
         if(enemyHp <= 0)
         {
             StartCoroutine(WinBattle());
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        enemyHp -= damage;
+        enemyHealthbar.fillAmount = (float)enemyHp / (float)enemy.health;
     }
 
     IEnumerator WinBattle()
@@ -148,7 +153,10 @@ public class GameManager : MonoBehaviour
 
     public void EndTurn()
     {
-        StartCoroutine(EnemyTurn());
+        if (enemyHp > 0)
+        {
+            StartCoroutine(EnemyTurn());
+        }
     }
 
     IEnumerator EnemyTurn()
@@ -202,7 +210,11 @@ public class GameManager : MonoBehaviour
 
         SetupDice();
 
-        if(enemy.type == EnemyType.HIGHROLLER)
+        if(enemy.type == EnemyType.BURNING)
+        {
+            BurnRandomDie();
+        }
+        else if(enemy.type == EnemyType.HIGHROLLER)
         {
             StartCoroutine(HighRollerEffect());
         }
@@ -237,24 +249,25 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         aud[0].PlayOneShot(singleDie, 1f);
         highDie.StartCoroutine(highDie.RollDie());
-
-        if(enemy.enemyID == "FINAL_BOSS")
-        {
-            yield return new WaitForSeconds(1f);
-            StartCoroutine(HighRollerEffect());
-        }
     }
 
     public IEnumerator FishermanEffect()
     {
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
-        float speed = 300;
+        float speed = 500;
         while (chosenDie.transform.position.y < 1000)
         {
             chosenDie.transform.Translate(Vector3.up * Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
         Destroy(chosenDie);
+    }
+
+    public void BurnRandomDie()
+    {
+        int rand = Random.Range(0, diceParent.childCount - 1);
+        GameObject chosenDie = diceParent.GetChild(rand).gameObject;
+        chosenDie.GetComponent<DieSlot>().die.SetBurning();
     }
 }

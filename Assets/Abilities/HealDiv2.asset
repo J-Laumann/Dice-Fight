@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b26370831c5142442a9ca4ad50d6a9e6, type: 3}
-  m_Name: AttackFill10
+  m_Name: HealDiv2
   m_EditorClassIdentifier: 
-  abilityID: ATTACK_FILL10
-  abilityName: Filling Attack
-  abilityDesc: deals 6 damage
-  uses: -1
+  abilityID: HEAL_DIV2
+  abilityName: Weak Heal
+  abilityDesc: Heal by Dice / 2
+  uses: 1
   dieSlots:
   - min: 1
-    max: 20
-    fillAmount: 10
+    max: 8
+    fillAmount: -1

@@ -25,6 +25,7 @@ public class Die : MonoBehaviour
     public bool beingDragged;
     public DieSlot slot, ogSlot;
 
+    public bool burning;
     public bool killing;
 
     Image image;
@@ -150,6 +151,11 @@ public class Die : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (burning)
+        {
+            GameManager.instance.currentHp--;
+        }
+
         if (!killing)
         {
             Destroy(ogSlot.gameObject);
@@ -168,5 +174,11 @@ public class Die : MonoBehaviour
         }
 
         valueText.text = "" + value;
+    }
+
+    public void SetBurning()
+    {
+        burning = true;
+        GetComponent<Image>().color = Color.red;
     }
 }
