@@ -43,8 +43,8 @@ public class EnterBattleScript : MonoBehaviour
             firstFight = false;
             TransitionHandler.instance.SlideIn();
             StartCoroutine("TriggerBattle");
-            if(FindObjectOfType<TutorialTrigger>() != null)
-                FindObjectOfType<TutorialTrigger>().TriggerTutorial();
+            if (FindObjectOfType<TutorialTrigger>() != null)
+                FindObjectOfType<TutorialTrigger>().TriggerOverworldTutorial();
         }
     }
 

@@ -31,9 +31,6 @@ public class MainMenuController : MonoBehaviour
         PlayerData.maxHp = PlayerPrefs.GetInt("maxHp", 20);
         PlayerData.souls = PlayerPrefs.GetInt("souls", 0);
 
-        PlayerPrefs.SetInt("oTutorial", 0);
-        PlayerPrefs.SetInt("bTutorial", 0);
-
         if (PlayerPrefs.HasKey("pand"))
             PlayerData.pand = JsonUtility.FromJson<PlayerAnD>(PlayerPrefs.GetString("pand"));
         else

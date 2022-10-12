@@ -2783,7 +2783,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 438360436}
         m_TargetAssemblyTypeName: TutorialTrigger, Assembly-CSharp
-        m_MethodName: TriggerTutorial
+        m_MethodName: TriggerOverworldTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9439,7 +9439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7669256348367071262, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
       propertyPath: enemyID
-      value: Enemy1
+      value: R1E1
       objectReference: {fileID: 0}
     - target: {fileID: 7669256348367071262, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
       propertyPath: enemy
