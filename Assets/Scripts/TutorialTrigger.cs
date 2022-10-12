@@ -22,13 +22,16 @@ public class TutorialTrigger : MonoBehaviour
     public void TriggerTutorial()
     {
         // Checks if player is in their first fight in the game
-        if (!EnterBattleScript.firstFight && PlayerData.souls == 0)
+        if (PlayerPrefs.GetInt("bTutorial") == 0)
         {
             FindObjectOfType<TutorialUIManager>().BattleTutorial(dialogue);
+            PlayerPrefs.SetInt("bTutorial", 1);
         }
-        else
+        
+        if (PlayerPrefs.GetInt("oTutorial") == 0)
         {
             FindObjectOfType<TutorialUIManager>().OverWorldTutorial(dialogue);
+            PlayerPrefs.SetInt("oTutorial", 1);
         } 
     }
 }

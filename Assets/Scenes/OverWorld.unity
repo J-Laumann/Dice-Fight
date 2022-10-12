@@ -10330,7 +10330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 1064497189}
-  enemyID: FinalBoss
+  enemyID: FINAL_BOSS
 --- !u!1 &1576684285
 GameObject:
   m_ObjectHideFlags: 0
