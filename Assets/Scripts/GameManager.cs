@@ -94,10 +94,10 @@ public class GameManager : MonoBehaviour
         newDie.GetComponentInChildren<Die>().type = type;
     }
 
-    public void AttackEnemyTest(int damage)
+    public void AttackEnemy(int damage)
     {
         aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
-        TakeDamage(damage);
+        DealDamage(damage);
 
         if(enemyHp <= 0)
         {
@@ -106,6 +106,12 @@ public class GameManager : MonoBehaviour
     }
 
     public void TakeDamage(int damage)
+    {
+        currentHp -= damage;
+        playerHealthbar.fillAmount = (float)currentHp / (float)PlayerData.maxHp;
+    }
+
+    public void DealDamage(int damage)
     {
         enemyHp -= damage;
         enemyHealthbar.fillAmount = (float)enemyHp / (float)enemy.health;
@@ -122,6 +128,9 @@ public class GameManager : MonoBehaviour
         TransitionHandler.instance.SlideIn();
         PlayerPrefs.SetInt(enemyID + "_DEAD", 1);
         PlayerData.souls++;
+
+        if (enemyID.Contains("Door"))
+            PlayerData.maxHp += 5;
 
         yield return new WaitForSeconds(1.5f);
 
@@ -179,16 +188,7 @@ public class GameManager : MonoBehaviour
 
         aud[1].PlayOneShot(attackSounds[Random.Range(0, attackSounds.Length)], 1.0f);
 
-        if (enemy.type == EnemyType.DAMAGE)
-        {
-            currentHp -= enemy.attack;
-        }
-        else if(enemy.type == EnemyType.HIGHROLLER)
-        {
-            currentHp -= enemy.attack;
-        }
-
-        playerHealthbar.fillAmount = (float)currentHp / (float) PlayerData.maxHp;
+        TakeDamage(enemy.attack);
 
         yield return new WaitForSeconds(1f);
 
@@ -220,6 +220,11 @@ public class GameManager : MonoBehaviour
         }
         else if(enemy.type == EnemyType.FISHERMAN)
         {
+            StartCoroutine(FishermanEffect());
+        }
+        else if(enemy.type == EnemyType.FINALBOSS)
+        {
+            BurnRandomDie();
             StartCoroutine(FishermanEffect());
         }
 

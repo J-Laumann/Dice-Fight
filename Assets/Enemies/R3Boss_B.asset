@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 507dd188c1d705a42bb12dce45491317, type: 3}
-  m_Name: Room2Dmg
+  m_Name: R3Boss_B
   m_EditorClassIdentifier: 
-  enemyID: ROOM2_DMG
-  health: 50
-  attack: 7
-  type: 0
+  enemyID: R3Boss_B
+  health: 100
+  attack: 4
+  type: 3

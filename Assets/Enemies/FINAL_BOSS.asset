@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyID: FINAL_BOSS
   health: 250
   attack: 5
-  type: 1
+  type: 4

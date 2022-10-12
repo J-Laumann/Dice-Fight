@@ -84,25 +84,25 @@ public class PlayerAbility : MonoBehaviour
         // Deals damage equal to the dice
         else if(ability.abilityID == "ATTACK")
         {
-            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value);
+            GameManager.instance.AttackEnemy(dieSlots[0].die.value);
         }
 
         // Deals damage equal to the dice in the two slots multiplied
         else if(ability.abilityID == "ATTACK_MULT")
         {
-            GameManager.instance.AttackEnemyTest(dieSlots[0].die.value * dieSlots[1].die.value);
+            GameManager.instance.AttackEnemy(dieSlots[0].die.value * dieSlots[1].die.value);
         }
 
         // If you fill the slot with a total of 8, it deals 10 damage
         else if(ability.abilityID == "ATTACK_FILL8")
         {
-            GameManager.instance.AttackEnemyTest(10);
+            GameManager.instance.AttackEnemy(10);
         }
 
         // If you fill the slot with a total of 20, it deals 25 damage
         else if (ability.abilityID == "ATTACK_FILL20")
         {
-            GameManager.instance.AttackEnemyTest(25);
+            GameManager.instance.AttackEnemy(25);
         }
 
         // Heals half of the dice value
