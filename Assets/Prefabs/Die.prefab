@@ -229,6 +229,8 @@ MonoBehaviour:
   beingDragged: 0
   slot: {fileID: 0}
   ogSlot: {fileID: 0}
+  burning: 0
+  killing: 0
 --- !u!114 &2111620185870163365
 MonoBehaviour:
   m_ObjectHideFlags: 0

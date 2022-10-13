@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Sprite[] diceSprites;
 
-    public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab;
+    public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab, burnEffect;
     public Transform diceParent, abilitiesParent;
 
     public Button endTurnButton;
@@ -151,6 +151,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RefreshAbilities()
+    {
+        abilitiesParent.gameObject.SetActive(true);
+        foreach (Transform child in abilitiesParent)
+        {
+            PlayerAbility ability = child.GetComponent<PlayerAbility>();
+            ability.Refresh();
+        }
+    }
+
     public IEnumerator DiceCountCheck()
     {
         yield return new WaitForEndOfFrame();
@@ -177,10 +187,7 @@ public class GameManager : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach(Transform child in abilitiesParent)
-        {
-            Destroy(child.gameObject);
-        }
+        abilitiesParent.gameObject.SetActive(false);
 
         endTurnButton.gameObject.SetActive(false);
 
@@ -209,10 +216,12 @@ public class GameManager : MonoBehaviour
         }
 
         SetupDice();
+        RefreshAbilities();
+        endTurnButton.gameObject.SetActive(true);
 
-        if(enemy.type == EnemyType.BURNING)
+        if (enemy.type == EnemyType.BURNING)
         {
-            BurnRandomDie();
+            StartCoroutine(BurnRandomDie());
         }
         else if(enemy.type == EnemyType.HIGHROLLER)
         {
@@ -224,12 +233,9 @@ public class GameManager : MonoBehaviour
         }
         else if(enemy.type == EnemyType.FINALBOSS)
         {
-            BurnRandomDie();
+            StartCoroutine(BurnRandomDie());
             StartCoroutine(FishermanEffect());
         }
-
-        SetupAbilities();
-        endTurnButton.gameObject.SetActive(true);
     }
 
     public IEnumerator HighRollerEffect()
@@ -260,7 +266,7 @@ public class GameManager : MonoBehaviour
     {
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
-        float speed = 500;
+        float speed = 1000;
         while (chosenDie.transform.position.y < 1000)
         {
             chosenDie.transform.Translate(Vector3.up * Time.deltaTime * speed);
@@ -269,8 +275,9 @@ public class GameManager : MonoBehaviour
         Destroy(chosenDie);
     }
 
-    public void BurnRandomDie()
+    public IEnumerator BurnRandomDie()
     {
+        yield return new WaitForEndOfFrame();
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
         chosenDie.GetComponent<DieSlot>().die.SetBurning();

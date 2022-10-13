@@ -1342,10 +1342,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1830702615, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 846c52f857140844c98d24aa0c04a2d7, type: 3}
     - target: {fileID: 2437721285593175888, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
       propertyPath: m_Name
       value: FightCanvas
@@ -1433,6 +1429,38 @@ PrefabInstance:
     - target: {fileID: 2437721285593175892, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799457905466771250, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}

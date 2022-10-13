@@ -15,6 +15,11 @@ public class DieSlotData
         max = slot.max;
         fillAmount = slot.fillAmount;
     }
+
+    public object Clone()
+    {
+        return this.MemberwiseClone();
+    }
 }
 
 public class DieSlot : MonoBehaviour

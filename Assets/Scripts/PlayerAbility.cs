@@ -20,6 +20,10 @@ public class PlayerAbility : MonoBehaviour
         dieSlots = new List<DieSlot>();
         baseAbility = _ability;
         ability = new AbilityData(_ability);
+        for(int i = 0; i < ability.dieSlots.Length; i++)
+        {
+            ability.dieSlots[i] = new DieSlotData(ability.dieSlots[i]);
+        }
         uses = _ability.uses;
         GenerateUI();
     }
@@ -45,6 +49,15 @@ public class PlayerAbility : MonoBehaviour
         descText.text = ability.abilityDesc;
 
         UpdateUses();
+    }
+
+    public void Refresh()
+    {
+        uses = baseAbility.uses;
+        foreach (Transform child in dieSlotParent)
+            Destroy(child.gameObject);
+        dieSlots = new List<DieSlot>();
+        GenerateUI();
     }
 
     public void UpdateUses()

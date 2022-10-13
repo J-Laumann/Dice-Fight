@@ -17,7 +17,12 @@ public class AbilityData : ScriptableObject
         abilityName = og.abilityName;
         abilityDesc = og.abilityDesc;
         uses = og.uses;
-        dieSlots = og.dieSlots;
+
+        dieSlots = new DieSlotData[og.dieSlots.Length];
+        for(int i = 0; i < og.dieSlots.Length; i++)
+        {
+            dieSlots[i] = (DieSlotData)og.dieSlots[i].Clone();
+        }
     }
 
 }

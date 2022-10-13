@@ -15,4 +15,4 @@ MonoBehaviour:
   enemyID: R1E1_D
   health: 15
   attack: 3
-  type: 0
+  type: 3

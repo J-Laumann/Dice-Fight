@@ -38,7 +38,7 @@ public class SoulShop : MonoBehaviour
         {
             PlayerData.souls -= cost;
             PlayerData.pand.abilities.Add(ability);
-            Destroy(gameObject);
+            Destroy(button.gameObject);
         }
     }
 
@@ -48,7 +48,7 @@ public class SoulShop : MonoBehaviour
         {
             PlayerData.souls -= cost;
             PlayerData.pand.dice.Add(die);
-            Destroy(gameObject);
+            Destroy(button.gameObject);
         }
     }
 

@@ -151,13 +151,12 @@ public class Die : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (burning)
-        {
-            GameManager.instance.currentHp--;
-        }
 
         if (!killing)
         {
+            if (burning)
+                GameManager.instance.TakeDamage(2);
+
             Destroy(ogSlot.gameObject);
             GameManager.instance.StartCoroutine(GameManager.instance.DiceCountCheck());
         }
@@ -179,6 +178,6 @@ public class Die : MonoBehaviour
     public void SetBurning()
     {
         burning = true;
-        GetComponent<Image>().color = Color.red;
+        Instantiate(GameManager.instance.burnEffect, transform);
     }
 }
