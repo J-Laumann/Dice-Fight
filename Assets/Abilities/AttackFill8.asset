@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityID: ATTACK_FILL8
   abilityName: Fish Fill-8
   abilityDesc: Does 10 damage
-  uses: -1
+  uses: 1
   dieSlots:
   - min: 1
     max: 20

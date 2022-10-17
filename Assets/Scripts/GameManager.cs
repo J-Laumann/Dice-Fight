@@ -297,7 +297,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         aud[1].PlayOneShot(egirlSound, 1.0f);
-        yield return new WaitForSeconds(0.2f);
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
         float speed = 1000;

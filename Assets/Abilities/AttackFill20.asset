@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityID: ATTACK_FILL20
   abilityName: 20-20 Laser Vision
   abilityDesc: Does 25 damage
-  uses: -1
+  uses: 2
   dieSlots:
   - min: 1
     max: 20
