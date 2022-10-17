@@ -959,6 +959,23 @@ MonoBehaviour:
       abilities to make obtaining their\t\n  souls more difficult."
     - "  Be warned, the farther you progress in the game, the\n  more difficult and
       challenging the enemies will get, so\t\n  good luck!"
+  shopDialogue:
+    name: 
+    sentences: []
+  hiRoller:
+    name: '  High-Roller'
+    sentences:
+    - "  This gambling man rerolls the die with the highest\n  value, dice with more
+      sides taking priority in ties."
+  fisher:
+    name: '  Fisher'
+    sentences:
+    - "  This laid back dude steals away a random die\n  from the player each turn."
+  pyro:
+    name: '  Pyro'
+    sentences:
+    - "  This crazy gal sets a random die on fire, causing\n  it to deal damage to
+      the player when used."
 --- !u!114 &1914634794
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -288,4 +288,9 @@ public class GameManager : MonoBehaviour
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
         chosenDie.GetComponent<DieSlot>().die.SetBurning();
     }
+
+    public EnemyType GetEnemy()
+    {
+        return enemy.type;
+    }
 }
