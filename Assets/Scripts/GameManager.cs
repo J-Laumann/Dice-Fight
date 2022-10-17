@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public List<AbilityData> baseAbilities;
 
     public Sprite[] diceSprites;
+    public EnemyImage[] enemySprites;
+
+    public Image enemyImage;
 
     public GameObject newDiePrefab, dieSlotPrefab, abilityPrefab, burnEffect;
     public Transform diceParent, abilitiesParent;
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     public AudioClip[] highRollerSounds;
     public AudioClip fisherSound;
     public AudioClip pyroSound;
+    public AudioClip egirlSound;
 
     [Header("TESTING VARIABLES")]
     public int currentHp;
@@ -68,14 +72,18 @@ public class GameManager : MonoBehaviour
         SetupUI();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetupUI()
     {
+        // Load enemy image
+        foreach(EnemyImage image in enemySprites)
+        {
+            if (image.type == enemy.type)
+            {
+                enemyImage.sprite = image.sprite;
+                break;
+            }
+        }
+
         SetupAbilities();
         SetupDice();
     }
@@ -214,6 +222,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
 
             TransitionHandler.instance.SlideOut();
+            PlayerPrefs.SetFloat("PlayerZ", PlayerPrefs.GetFloat("PlayerZ", 0) - 2);
             UnityEngine.SceneManagement.SceneManager.LoadScene("OverWorld");
         }
 
@@ -232,6 +241,10 @@ public class GameManager : MonoBehaviour
         else if(enemy.type == EnemyType.FISHERMAN)
         {
             StartCoroutine(FishermanEffect());
+        }
+        else if(enemy.type == EnemyType.EGIRL)
+        {
+            StartCoroutine(EGirlEffect());
         }
         else if(enemy.type == EnemyType.FINALBOSS)
         {
@@ -277,6 +290,23 @@ public class GameManager : MonoBehaviour
             chosenDie.transform.Translate(Vector3.up * Time.deltaTime * speed);
             yield return new WaitForEndOfFrame();
         }
+        Destroy(chosenDie);
+    }
+
+    public IEnumerator EGirlEffect()
+    {
+        yield return new WaitForSeconds(0.5f);
+        aud[1].PlayOneShot(egirlSound, 1.0f);
+        yield return new WaitForSeconds(0.2f);
+        int rand = Random.Range(0, diceParent.childCount - 1);
+        GameObject chosenDie = diceParent.GetChild(rand).gameObject;
+        float speed = 1000;
+        while (chosenDie.transform.position.y < 1000)
+        {
+            chosenDie.transform.Translate(Vector3.up * Time.deltaTime * speed);
+            yield return new WaitForEndOfFrame();
+        }
+        DealDamage(-chosenDie.GetComponent<DieSlot>().die.value / 2);
         Destroy(chosenDie);
     }
 

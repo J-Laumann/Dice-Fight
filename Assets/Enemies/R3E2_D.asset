@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 507dd188c1d705a42bb12dce45491317, type: 3}
-  m_Name: R1E1_D
+  m_Name: R3E2_D
   m_EditorClassIdentifier: 
-  enemyID: R1E1_D
-  health: 15
-  attack: 3
+  enemyID: R3E2
+  health: 50
+  attack: 7
   type: 0

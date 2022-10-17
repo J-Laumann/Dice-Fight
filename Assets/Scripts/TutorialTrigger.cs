@@ -16,10 +16,11 @@ public class TutorialTrigger : MonoBehaviour
     public Tutorial hiRoller;
     public Tutorial fisher;
     public Tutorial pyro;
+    public Tutorial egirl;
 
     private void Start()
     {
-        if (PlayerData.souls != 0)
+        if (PlayerPrefs.GetInt("bTutorial", 0) == 1)
         {
             gameObject.SetActive(false);
         }
@@ -46,6 +47,12 @@ public class TutorialTrigger : MonoBehaviour
         {
             FindObjectOfType<TutorialUIManager>().ShopTutorial(pyro);
             PlayerPrefs.SetInt("pyroTutorial", 1);
+        }
+
+        if (GameManager.instance.GetEnemy() == EnemyType.EGIRL && PlayerPrefs.GetInt("egirlTutorial", 0) == 0)
+        {
+            FindObjectOfType<TutorialUIManager>().ShopTutorial(egirl);
+            PlayerPrefs.SetInt("egirlTutorial", 1);
         }
     }
 

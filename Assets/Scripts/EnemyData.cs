@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class EnemyImage
+{
+    public EnemyType type;
+    public Sprite sprite;
+}
+
 public enum EnemyType
 {
     DAMAGE,
     HIGHROLLER,
     FISHERMAN,
     BURNING,
+    EGIRL,
     FINALBOSS
 }
 

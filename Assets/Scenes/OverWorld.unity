@@ -2958,6 +2958,18 @@ MonoBehaviour:
       new abilities."
     - "  The soul shop can be opened and closed at any time\n  in the overworld by
       pressing 'E'."
+  hiRoller:
+    name: 
+    sentences: []
+  fisher:
+    name: 
+    sentences: []
+  pyro:
+    name: 
+    sentences: []
+  egirl:
+    name: 
+    sentences: []
 --- !u!1 &445470741
 GameObject:
   m_ObjectHideFlags: 0
@@ -10485,6 +10497,7 @@ Transform:
   - {fileID: 1706649694}
   - {fileID: 196264010}
   - {fileID: 1425251730}
+  - {fileID: 2108949351}
   m_Father: {fileID: 2093480425}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13792,6 +13805,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2108949350
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1468827537}
+    m_Modifications:
+    - target: {fileID: 2345570605225026991, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_Name
+      value: Enemy5 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -25.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.248175
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.063633
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669256348367071262, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: enemyID
+      value: R3E4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7669256348367071262, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 7875e36a0b310dd4497b9b712d2a8adc, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+--- !u!4 &2108949351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5418881444566392193, guid: e412385a3508aa5489390fd6a33ec6f9, type: 3}
+  m_PrefabInstance: {fileID: 2108949350}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2125903593
 GameObject:
   m_ObjectHideFlags: 0
