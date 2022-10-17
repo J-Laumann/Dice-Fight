@@ -1342,6 +1342,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 516214899, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: fisherSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d31dea49804803d40b3c0f6ecd15523c, type: 3}
+    - target: {fileID: 516214899, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
+      propertyPath: pyroSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 22f13bf0c2a914a48a42625301c087c3, type: 3}
     - target: {fileID: 2437721285593175888, guid: 6a2ecd81fb5fdb44691f77d81442b98e, type: 3}
       propertyPath: m_Name
       value: FightCanvas

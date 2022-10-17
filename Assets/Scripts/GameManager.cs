@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public AudioClip defeat;
     public AudioClip[] attackSounds;
     public AudioClip[] highRollerSounds;
+    public AudioClip fisherSound;
+    public AudioClip pyroSound;
 
     [Header("TESTING VARIABLES")]
     public int currentHp;
@@ -264,6 +266,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FishermanEffect()
     {
+        aud[1].PlayOneShot(fisherSound, 1.0f);
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
         float speed = 1000;
@@ -278,6 +281,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator BurnRandomDie()
     {
         yield return new WaitForEndOfFrame();
+        aud[1].PlayOneShot(pyroSound, 1.0f);
         int rand = Random.Range(0, diceParent.childCount - 1);
         GameObject chosenDie = diceParent.GetChild(rand).gameObject;
         chosenDie.GetComponent<DieSlot>().die.SetBurning();
