@@ -2950,6 +2950,14 @@ MonoBehaviour:
     - "  In the world, you can come across enemies that vary\t\n  in difficulty each
       with different abilites. "
     - '  Go and approach an enemy (red capsule) to learn more.'
+  shopDialogue:
+    name: '  Shop Overview'
+    sentences:
+    - "  Congratulations! You beat a human and collected your\n  first soul."
+    - "  Souls can be spent in the soul shop in order to obtain\n  more dice and
+      new abilities."
+    - "  The soul shop can be opened and closed at any time\n  in the overworld by
+      pressing 'E'."
 --- !u!1 &445470741
 GameObject:
   m_ObjectHideFlags: 0
@@ -5878,7 +5886,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.96, y: 34.702}
+  m_AnchoredPosition: {x: -100.96008, y: 34.701977}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820900454

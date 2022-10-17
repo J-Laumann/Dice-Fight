@@ -16,6 +16,8 @@ public class TransitionHandler : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
         instance = this;
+
+        tutorialAnim = GameObject.FindGameObjectWithTag("Dialogue Box").GetComponent<Animator>();
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ public class TutorialUIManager : MonoBehaviour
 
     private Queue<string> sentences;
 
-    private void Start()
+    private void Awake()
     {
         sentences = new Queue<string>();
     }
@@ -48,6 +48,24 @@ public class TutorialUIManager : MonoBehaviour
         sentences.Clear();
 
         // looks through string array and adds news sentences to the queue
+        foreach (string sentence in tutorial.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        DisplayNextTutorial();
+    }
+
+    public void ShopTutorial(Tutorial tutorial)
+    {
+
+
+        TransitionHandler.instance.DialogueOpen();
+
+        nameText.text = tutorial.name;
+
+        sentences.Clear();
+
         foreach (string sentence in tutorial.sentences)
         {
             sentences.Enqueue(sentence);

@@ -11,11 +11,20 @@ public class TutorialTrigger : MonoBehaviour
 {
     public Tutorial dialogue;
 
-    private void Awake()
+    public Tutorial shopDialogue;
+
+    private void Start()
     {
         if (PlayerData.souls != 0)
         {
             gameObject.SetActive(false);
+        }
+
+        if (PlayerData.souls != 0 && PlayerPrefs.GetInt("sTutorial", 0) == 0)
+        {
+            gameObject.SetActive(true);
+            FindObjectOfType<TutorialUIManager>().ShopTutorial(shopDialogue);
+            PlayerPrefs.SetInt("sTutorial", 1);
         }
     }
 
