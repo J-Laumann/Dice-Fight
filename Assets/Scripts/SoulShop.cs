@@ -32,12 +32,14 @@ public class SoulShop : MonoBehaviour
         soulsText.text = "Souls: " + PlayerData.souls;
     }
 
-    public void Purchase(int cost, AbilityData ability, GameObject button)
+    public void Purchase(int cost, AbilityData ability, AbilityData oldAbility, GameObject button)
     {
         if (PlayerData.souls >= cost)
         {
             PlayerData.souls -= cost;
             PlayerData.pand.abilities.Add(ability);
+            if(oldAbility != null)
+                PlayerData.pand.abilities.Remove(oldAbility);
             Destroy(button.gameObject);
         }
     }

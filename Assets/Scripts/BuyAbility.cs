@@ -11,6 +11,8 @@ public class BuyAbility : MonoBehaviour
 
     public int cost;
     public AbilityData ability;
+    [Tooltip("Used for upgradeable abilities")]
+    public AbilityData oldAbility;
 
     public TMP_Text nameText, costText;
 
@@ -23,7 +25,7 @@ public class BuyAbility : MonoBehaviour
         button = GetComponent<Button>();
 
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(delegate { SoulShop.instance.Purchase(cost, ability, gameObject); });
+        button.onClick.AddListener(delegate { SoulShop.instance.Purchase(cost, ability, oldAbility, gameObject); });
 
         nameText.text = ability.abilityName;
         costText.text = cost + " S";

@@ -208,6 +208,7 @@ MonoBehaviour:
   newDiePrefab: {fileID: 8326066842437473017, guid: 0fa59047970e9244a840fed4374a90d7, type: 3}
   dieSlotPrefab: {fileID: 8326066842437473017, guid: e916af8de74102a4891587df23588e23, type: 3}
   abilityPrefab: {fileID: 2296040977897703201, guid: 4bdf6aafb177d8c40b4f24bff0d459c3, type: 3}
+  abilitySpacerPrefab: {fileID: 2296040977897703201, guid: 8f1e0bd0dc7f15e4ebac7d4a4e5f3025, type: 3}
   burnEffect: {fileID: 4641082178052103922, guid: c5ed3ed40021e6e49add6f8442ea15d4, type: 3}
   diceParent: {fileID: 2437721284048677556}
   abilitiesParent: {fileID: 2437721283577555693}
@@ -554,7 +555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &573238500
@@ -1187,8 +1188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 110.00001}
+  m_SizeDelta: {x: 0, y: 19.999985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2437721285593175888
 GameObject:

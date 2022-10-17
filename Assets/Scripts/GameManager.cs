@@ -150,8 +150,11 @@ public class GameManager : MonoBehaviour
 
     public void SetupAbilities()
     {
-        foreach (AbilityData playerAbility in myAbilities)
+        for (int i = 0; i < myAbilities.Count; i++)
         {
+
+            AbilityData playerAbility = myAbilities[i];
+
             GameObject newAbility = Instantiate(abilityPrefab, abilitiesParent);
 
             PlayerAbility newPA = newAbility.GetComponent<PlayerAbility>();
@@ -167,7 +170,8 @@ public class GameManager : MonoBehaviour
         foreach (Transform child in abilitiesParent)
         {
             PlayerAbility ability = child.GetComponent<PlayerAbility>();
-            ability.Refresh();
+            if(ability)
+                ability.Refresh();
         }
     }
 
