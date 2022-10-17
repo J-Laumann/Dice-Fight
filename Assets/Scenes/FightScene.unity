@@ -949,14 +949,14 @@ MonoBehaviour:
     name: '  Battle Mechanics'
     sentences:
     - "  At the start of each battle, dice are rolled to decide\t\n  what you, the
-      player, can do."
+      player, can do. Starting off, you have\t\n  two kinds of dice, a d4 and d6."
     - "  Each ability has different requirements for activation\n  and a limited
-      number of uses. If you run out of uses,\t\n  you may be forced to end your
-      turn early."
-    - "  You gain more dice as you progress throughout the \t\n  game. This unlocks
-      more abilities for you to\t\n  use in battle."
-    - "  Enemies can have different abilities such as the high\t\n  roller, which
-      rerolls the die with the highest value at\t\n  the start of the player's turn."
+      number of uses. Abilities can be used\t\n  by clicking and dragging dice onto
+      the square slots."
+    - "  The player's turn ends either when all dice have been\t\n  used or when
+      the 'End Turn' button is pressed, which\t\n  then begins the enemy's turn."
+    - "  While this is just a normal enemy, some enemies will\t\n  possess special
+      abilities to make obtaining their\t\n  souls more difficult."
     - "  Be warned, the farther you progress in the game, the\n  more difficult and
       challenging the enemies will get, so\t\n  good luck!"
 --- !u!114 &1914634794
