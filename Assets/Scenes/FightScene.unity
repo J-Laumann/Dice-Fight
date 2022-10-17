@@ -948,15 +948,15 @@ MonoBehaviour:
   dialogue:
     name: '  Battle Mechanics'
     sentences:
-    - "  At the start of each battle, dice are rolled to decide what\t\n  you, the
+    - "  At the start of each battle, dice are rolled to decide\t\n  what you, the
       player, can do."
-    - "  Each ability has different requirements to meet, and\t\n  depending on how
-      many ability uses you have, you may\t\n  be forced to end your turn without
-      doing anything."
+    - "  Each ability has different requirements for activation\n  and a limited
+      number of uses. If you run out of uses,\t\n  you may be forced to end your
+      turn early."
     - "  You gain more dice as you progress throughout the \t\n  game. This unlocks
-      more abilities for you to use in battle."
+      more abilities for you to\t\n  use in battle."
     - "  Enemies can have different abilities such as the high\t\n  roller, which
-      rerolls the die with the highest value at the\t\n  start of the player's turn."
+      rerolls the die with the highest value at\t\n  the start of the player's turn."
     - "  Be warned, the farther you progress in the game, the\n  more difficult and
       challenging the enemies will get, so\t\n  good luck!"
 --- !u!114 &1914634794
